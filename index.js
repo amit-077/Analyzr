@@ -15,7 +15,7 @@ app.post("/analyze", async (req, res) => {
   try {
     let { code } = req.body;
     const answer = await model.generateContent(
-      `Analyze the time complexity and space complexity of below code. In response, just give the time and space complexity and nothing else. And give precise time and space complexity. Like if it's O(2N) don't give O(N), give O(2N). Just provide response in plain text, no markdown syntax, not any special characters nothing. Just plain text. Keep the below format : 'Time Complexity : ___', 'Space Complexity : ___'. In the place of '___' fill their respective complexities.${code}`
+      `Analyze the time complexity and space complexity of below code. In response, just give the time and space complexity and nothing else. And give precise time and space complexity. Like if it's O(2N) don't give O(N), give O(2N). Just provide response in plain text, no markdown syntax, not any special characters nothing, just plain text.${code}`
     );
     let complexity = answer.response.text();
     const timeMatch = complexity.match(/Time complexity:\s*([^\s]+)/i);
